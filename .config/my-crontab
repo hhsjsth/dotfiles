@@ -1,0 +1,8 @@
+# Chronological table of program loadings                                       
+# Edit with "crontab" for proper functionality, "man 5 crontab" for formatting
+# User: johndoe
+
+# mm  hh  DD  MM  W /path/progam [--option]...  ( W = weekday: 0-6 [Sun=0] )
+#  *   22  *   *   * bash /home/gtr/autoPush.sh &> /home/gtr/tmp/homePush.log
+#  *   22  *   *   * bash /home/gtr/.config/autoPush.sh &> /home/gtr/tmp/dotConfigPush.log
+  *   22  *   *   * git --git-dir=$HOME/.cfg/ --work-tree=$HOME commit -a --amend --no-edit && git --git-dir=$HOME/.cfg/ --work-tree=$HOME push origin main -f &> /home/gtr/tmp/dotConfigPush.log

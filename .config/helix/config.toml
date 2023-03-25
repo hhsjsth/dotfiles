@@ -1,0 +1,15 @@
+theme = "gruvbox"
+
+[editor]
+line-number = "relative"
+scrolloff = 5
+cursorline = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.insert]
+j = { k = "normal_mode" }
+
