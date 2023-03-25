@@ -176,6 +176,7 @@ alias systemctl="sudo systemctl"
 alias fdisk="sudo fdisk"
 alias updatedb="sudo updatedb"
 alias zshhist="nvim ~/.zsh_history"
+alias che='chezmoi'
 
 function mkcd {
   command mkdir $1 && cd $1
