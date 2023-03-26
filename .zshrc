@@ -85,6 +85,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # plugins=(zsh-autosuggestions zsh-syntax-highlighting sudo vi-mode aliases command-not-found fzf-tab)
 plugins=(zsh-autosuggestions fast-syntax-highlighting sudo vi-mode extract)
 # source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+# source ./.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 source $ZSH/oh-my-zsh.sh
 
