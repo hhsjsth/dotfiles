@@ -128,6 +128,9 @@ export _ZO_ECHO=1
 # Atuin
 export ATUIN_NOBIND="true"
 
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
