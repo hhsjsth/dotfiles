@@ -1,2 +1,4 @@
+# GO111MODULE=on
+# GOPROXY=https://goproxy.cn,direct
 GO111MODULE=on
-GOPROXY=https://goproxy.cn,direct
+GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
