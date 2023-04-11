@@ -347,6 +347,7 @@ appendpath () {
 
 appendpath "$HOME/.cargo/bin"
 appendpath "$HOME/bin"
+appendpath "$HOME/.local/bin"
 # $(brew --prefix) 和 $HOMEBREW_PREFIX 都可以
 # appendpath "$HOMEBREW_PREFIX/bin"
 # appendpath "$HOMEBREW_PREFIX/sbin"
