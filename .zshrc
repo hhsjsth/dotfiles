@@ -178,7 +178,7 @@ alias neolol="ff | lolcat"
 alias pacman="sudo pacman"
 alias systemctl="sudo systemctl"
 alias fdisk="sudo fdisk"
-alias updatedb="sudo updatedb"
+# alias updatedb="sudo updatedb"
 alias zshhist="nvim ~/.zsh_history"
 alias che='chezmoi'
 
