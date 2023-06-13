@@ -349,10 +349,6 @@ appendpath "$HOME/.cargo/bin"
 appendpath "$HOME/bin"
 appendpath "$HOME/.local/bin"
 appendpath "/opt/alist"
-# $(brew --prefix) 和 $HOMEBREW_PREFIX 都可以
-# appendpath "$HOMEBREW_PREFIX/bin"
-# appendpath "$HOMEBREW_PREFIX/sbin"
-
 
 # https://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path
 prependpath () {
@@ -365,16 +361,7 @@ prependpath () {
     esac
 }
 
-# prependpath "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
-# export PATH=$HOME/conda_software/bin${PATH:+:${PATH}}
-
 #### PATH
-##############################
-
-##############################
-#### LIBRARY_PATH
-# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(brew --prefix)/opt/openssl@1.1/lib/"
-#### LIBRARY_PATH
 ##############################
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -405,59 +392,6 @@ EOF
   sudo cp -f $TMP_SMB_CONF $SMB_CONF
   sudo smbpasswd -a gtr # 创建一个 smb 账户
   sudo systemctl enable --now smb.service
-}
-
-relink () {
-  set -e
-  original="$1" target="$2"
-  if [ -d "$target" ]; then
-    target="$target/${original##*/}"
-  mv "$original" "$target"
-  fi
-  ln -s "$target" "$original"
-}
-
-function cfg1stcheckout() {
-  mkdir -p .config-backup
-  cfg checkout
-  if [ $? = 0 ]; then
-    echo "Checked out config.";
-    else
-      echo "Backing up pre-existing dot files.";
-      config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-  fi;
-  cfg checkout
-  cp $HOME/.config/git/.gitignore $HOME/.cfg/info/exclude
-  # config config status.showUntrackedFiles no
-}
-
-function ml() { mkdir -p "$(dirname "$1")" && rsync -aP --no-links "$1" "$2" && ln -sf "$2" "$1" }
-
-relink1 () {
-  #!/bin/sh
-  set -e
-  original="$1" target="$2"
-  if [ -d "$target" ]; then
-    target="$target/${original##*/}"
-  fi
-  mv -- "$original" "$target"
-  case "$original" in
-    */*)
-      case "$target" in
-        /*) :;;
-        *) target="$(cd -- "$(dirname -- "$target")" && pwd)/${target##*/}"
-      esac
-  esac
-  ln -s -- "$target" "$original"
-}
-
-renvim () {
-  rm -rf ~/.config/nvim
-  rm -rf ~/.local/share/nvim
-  rm -rf ~/.local/state/nvim
-  rm -rf ~/.cache/nvim
-  git clone https://github.com/LazyVim/starter ~/.config/nvim
-  nvim
 }
 
 # function
