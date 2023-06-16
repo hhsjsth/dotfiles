@@ -24,7 +24,7 @@
 # [https]
 # 	proxy = socks5://127.0.0.1:7890
 [http "https://github.com"]
-	proxy = socks5://192.168.31.201:7890
+	proxy = socks5://192.168.137.1:7890
 [color]
 	ui = auto
 [filter "lfs"]
