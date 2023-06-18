@@ -64,8 +64,8 @@ handle_extension() {
             ## Archive
             a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
             rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
-            bsdtar --list --file "${FILE_PATH}" && exit 0
             atool --list -- "${FILE_PATH}" && exit 0
+            bsdtar --list --file "${FILE_PATH}" && exit 0
             exit 1 ;;
         rar)
             ## Avoid password prompt by providing empty password
