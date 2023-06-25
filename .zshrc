@@ -348,6 +348,7 @@ appendpath () {
 appendpath "$HOME/.cargo/bin"
 appendpath "$HOME/bin"
 appendpath "$HOME/.local/bin"
+appendpath "$HOME/go/bin"
 appendpath "/opt/alist"
 
 # https://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path
