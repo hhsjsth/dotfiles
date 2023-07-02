@@ -83,7 +83,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 # 可选的 colored-man-pages git (也就一些 git 的 alias)
 # plugins=(zsh-autosuggestions zsh-syntax-highlighting sudo vi-mode aliases command-not-found fzf-tab)
-plugins=(zsh-autosuggestions fast-syntax-highlighting sudo vi-mode extract)
+plugins=(zsh-autosuggestions fast-syntax-highlighting sudo vi-mode extract fzf-tab)
 # source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 # source ./.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -99,6 +99,66 @@ eval "$(zoxide init zsh)"
 # eval "$(zoxide init --cmd cd zsh)"
 # eval "$(atuin init zsh)"
 #### EVAL
+##############################
+
+##############################
+#### fzf-tab
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+# give a preview of commandline arguments when completing `kill`
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+  '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
+# show systemd unit status
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+# show file contents
+# zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+# export LESSOPEN='|$HOME/.lessfilter %s'
+zstyle ':fzf-tab:complete:*:*' fzf-preview '$HOME/.lessfilter ${(Q)realpath}'
+# To disable or override preview for command options and subcommands, use following
+# zstyle ':fzf-tab:complete:*:options' fzf-preview 
+# zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+# environment variable
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+	fzf-preview 'echo ${(P)word}'
+# git
+# it is an example. you can change it
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+	'git diff $word | delta'
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+	'git log --color=always $word'
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+	'git help $word | bat -plman --color=always'
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+	'case "$group" in
+	"commit tag") git show --color=always $word ;;
+	*) git show --color=always $word | delta ;;
+	esac'
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+	'case "$group" in
+	"modified file") git diff $word | delta ;;
+	"recent commit object name") git show --color=always $word | delta ;;
+	*) git log --color=always $word ;;
+	esac'
+
+# Homebrew
+zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
+# tldr
+zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
+# Commands
+zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
+  '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
+zstyle ':fzf-tab:*' fzf-flags --height 50%
+#### fzf-tab
 ##############################
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -181,6 +241,7 @@ alias fdisk="sudo fdisk"
 # alias updatedb="sudo updatedb"
 alias zshhist="nvim ~/.zsh_history"
 alias che='chezmoi'
+# alias tree='lsd --tree'
 
 function mkcd {
   command mkdir $1 && cd $1
@@ -284,7 +345,7 @@ setsshproxy() {
 ########
 #### fzf
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude .local/state/nvim/ -I'
-export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --inline-info -m --preview "bat --style=numbers --color=always --line-range :500 {}"'
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --inline-info -m --preview "$HOME/.lessfilter {}"'
 # export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --inline-info -m'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
@@ -350,6 +411,7 @@ appendpath "$HOME/bin"
 appendpath "$HOME/.local/bin"
 appendpath "$HOME/go/bin"
 appendpath "/opt/alist"
+appendpath "/opt/riscv/bin"
 
 # https://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path
 prependpath () {

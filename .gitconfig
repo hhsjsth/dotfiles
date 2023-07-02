@@ -20,6 +20,10 @@
 
 [diff]
 	colorMoved = default
+	guitool = vscode
+
+[diff "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 
 [user]
 	name = hhsjsth
