@@ -36,7 +36,7 @@
 # 	proxy = socks5://127.0.0.1:7890
 
 [http "https://github.com"]
-	proxy = socks5://192.168.136.1:7890
+	proxy = socks5://gtr-host:7890
 
 [color]
 	ui = auto

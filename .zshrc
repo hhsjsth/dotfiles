@@ -122,7 +122,6 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=do
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 # show file contents
 # zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-# export LESSOPEN='|$HOME/.lessfilter %s'
 zstyle ':fzf-tab:complete:*:*' fzf-preview '$HOME/.lessfilter ${(Q)realpath}'
 # To disable or override preview for command options and subcommands, use following
 # zstyle ':fzf-tab:complete:*:options' fzf-preview 
@@ -190,6 +189,8 @@ export ATUIN_NOBIND="true"
 
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
+
+export LESSOPEN='|$HOME/.lessfilter %s'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -338,6 +339,14 @@ setsshproxy() {
   export http_proxy="http://$host_ip:7890"
   export https_proxy="http://$host_ip:7890"
   git config --global http.https://github.com.proxy socks5://$host_ip:7890
+}
+
+sethostproxy() {
+  # host_ip=$(echo $SSH_CONNECTION | choose 0)
+  export all_proxy="http://gtr-host:7890"
+  export http_proxy="http://gtr-host:7890"
+  export https_proxy="http://gtr-host:7890"
+  git config --global http.https://github.com.proxy socks5://gtr-host:7890
 }
 
 ######################## proxy end ########################
@@ -497,4 +506,4 @@ setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历�
 setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
 export SAVEHIST=1000000 # 保留 100000 条历史记录
 
-setsshproxy
+sethostproxy
