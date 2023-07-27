@@ -44,7 +44,14 @@ disable = ["emacs", "node", "config_update", "tldr", "helix"]
 #max_concurrency = 5
 # Additional git repositories to pull
 repos = [
-# "~/myRepo/helloRust/",
+  # "~/myRepo/helloRust/",
+  # "~/repo/riscv-gnu-toolchain/",
+  # "~/repo/linux/",
+  # "~/repo/pstack/",
+  # "~/repo/busybox/",
+  # "~/repo/joshuto/",
+  # "~/repo/FreeRTOS/",
+  # "~/repo/rt-thread/"
 ]
 
 # Don't pull the predefined git repos
