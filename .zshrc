@@ -220,7 +220,7 @@ alias path='tr ":" "\n" <<< $PATH'
 # alias vim="nvim"
 alias nvimconf="nvim ~/.config/nvim/init.vim"
 alias vimconf="nvim ~/.vimrc"
-alias zshconf="nvim ~/.zshrc"
+alias zshconf="nvims ~/.zshrc"
 alias setbrew='eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
 alias gz='tar -xzvf'
 alias tgz='tar -xzvf'
@@ -336,10 +336,17 @@ setsshproxy() {
 }
 
 sethostproxy() {
-  # host_ip=$(echo $SSH_CONNECTION | choose 0)
-  export all_proxy="http://gtr-host:7890"
-  export http_proxy="http://gtr-host:7890"
-  export https_proxy="http://gtr-host:7890"
+  export http_proxy=http://gtr-host:7890
+  export https_proxy=$http_proxy
+  export ftp_proxy=$http_proxy
+  export rsync_proxy=$http_proxy
+  export all_proxy=$http_proxy
+  export HTTP_PROXY=$proxy
+  export HTTPS_PROXY=$proxy
+  export FTP_PROXY=$proxy
+  export RSYNC_PROXY=$proxy
+  export ALL_PROXY=$http_proxy
+  export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
   git config --global http.https://github.com.proxy socks5://gtr-host:7890
 }
 
