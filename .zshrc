@@ -487,7 +487,8 @@ function nvims() {
     echo "Nothing selected"
     return 0
   elif [[ $config == "default" ]]; then
-    config=""
+    config="LazyVim"
+    # config=""
   fi
   NVIM_APPNAME=$config nvim $@
 }
