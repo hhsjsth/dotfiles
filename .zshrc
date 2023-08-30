@@ -83,7 +83,13 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 # 可选的 colored-man-pages git (也就一些 git 的 alias)
 # plugins=(zsh-autosuggestions zsh-syntax-highlighting sudo vi-mode aliases command-not-found fzf-tab)
-plugins=(fast-syntax-highlighting sudo vi-mode extract fzf-tab)
+plugins=(
+	fast-syntax-highlighting 
+	sudo
+	vi-mode
+	extract
+	fzf-tab
+)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 # source ./.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
