@@ -84,7 +84,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # 可选的 colored-man-pages git (也就一些 git 的 alias)
 # plugins=(zsh-autosuggestions zsh-syntax-highlighting sudo vi-mode aliases command-not-found fzf-tab)
 plugins=(
-	fast-syntax-highlighting 
+	fast-syntax-highlighting
 	sudo
 	vi-mode
 	extract
@@ -133,7 +133,7 @@ zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl
 # zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 zstyle ':fzf-tab:complete:*:*' fzf-preview '$HOME/.lessfilter ${(Q)realpath}'
 # To disable or override preview for command options and subcommands, use following
-# zstyle ':fzf-tab:complete:*:options' fzf-preview 
+# zstyle ':fzf-tab:complete:*:options' fzf-preview
 # zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 # environment variable
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
@@ -505,7 +505,7 @@ bindkey -s ^n "nvims\n"
 ##############################
 ##############################
 # source
-# source /home/gtr/.config/broot/launcher/bash/br
+[[ ! -f ~/.config/broot/launcher/bash/br ]] || source ~/.config/broot/launcher/bash/br
 # source
 ##############################
 
