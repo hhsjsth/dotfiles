@@ -1,0 +1,176 @@
+{
+    "additional-repositories": [],
+    "archinstall-language": "English",
+    "audio_config": null,
+    "bootloader": "Grub",
+    "config_version": "2.6.3",
+    "debug": false,
+    "disk_config": {
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "Boot",
+                            "ESP"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "0bc605a6-ad0c-427f-bbaf-5d2344162665",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 512
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [
+                            {
+                                "compress": false,
+                                "mountpoint": "/",
+                                "name": "@",
+                                "nodatacow": false
+                            },
+                            {
+                                "compress": false,
+                                "mountpoint": "/home",
+                                "name": "@home",
+                                "nodatacow": false
+                            },
+                            {
+                                "compress": false,
+                                "mountpoint": "/var/log",
+                                "name": "@log",
+                                "nodatacow": false
+                            },
+                            {
+                                "compress": false,
+                                "mountpoint": "/var/cache/pacman/pkg",
+                                "name": "@pkg",
+                                "nodatacow": false
+                            },
+                            {
+                                "compress": false,
+                                "mountpoint": "/.snapshots",
+                                "name": "@.snapshots",
+                                "nodatacow": false
+                            }
+                        ],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "btrfs",
+                        "mount_options": [
+                            "compress=zstd"
+                        ],
+                        "mountpoint": null,
+                        "obj_id": "d101010c-839a-414d-8b47-406c342fd95b",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1023671623680
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 513
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ]
+    },
+    "hostname": "gtr-arch",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "mirror_config": {
+        "custom_mirrors": [],
+        "mirror_regions": {
+            "China": [
+                "https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.xjtu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.wsyu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.shanghaitech.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.qlu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.nju.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.jlu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch",
+                "https://mirrors.aliyun.com/archlinux/$repo/os/$arch",
+                "https://mirror.redrock.team/archlinux/$repo/os/$arch",
+                "https://mirror.nyist.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.zju.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.wsyu.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.shanghaitech.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.nju.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.jlu.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.hit.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirrors.aliyun.com/archlinux/$repo/os/$arch",
+                "http://mirrors.163.com/archlinux/$repo/os/$arch",
+                "http://mirror.redrock.team/archlinux/$repo/os/$arch",
+                "http://mirror.nyist.edu.cn/archlinux/$repo/os/$arch",
+                "http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch"
+            ]
+        }
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "no_pkg_lookups": false,
+    "ntp": true,
+    "offline": false,
+    "packages": [
+        "networkmanager",
+        "neovim",
+        "openssh",
+        "zsh"
+    ],
+    "parallel downloads": 0,
+    "profile_config": null,
+    "script": "guided",
+    "silent": false,
+    "swap": true,
+    "timezone": "Asia/Shanghai",
+    "version": "2.6.3"
+}

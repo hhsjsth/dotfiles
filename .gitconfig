@@ -1,5 +1,6 @@
 [core]
 	pager = delta
+	excludesfile = /home/gtr/.gitignore_global
 	# set VSCode as default Git editor
 	# editor = code --wait
 # [sequence]

@@ -429,6 +429,7 @@ appendpath "$HOME/.local/bin"
 appendpath "$HOME/go/bin"
 appendpath "/opt/alist"
 appendpath "/opt/riscv/bin"
+appendpath "$HOME/repo/depot_tools"
 
 # https://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path
 prependpath () {
@@ -516,3 +517,5 @@ setopt hist_ignore_all_dups # 让 zsh 在保存历史记录时删除所有重复
 setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历史记录，这样可以在多个 zsh 会话中共享历史记录。
 setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
 export SAVEHIST=1000000 # 保留 100000 条历史记录
+
+[ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
