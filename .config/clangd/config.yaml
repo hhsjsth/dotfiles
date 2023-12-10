@@ -21,3 +21,9 @@ Diagnostics:
 #       WarnOnFloatingPointNarrowingConversion: false
 #   Index:
 #     Background: Build
+CompileFlags:
+  Remove: [-march=*, -mabi=*]
+InlayHints:
+  Enabled: Yes
+  #  Designators: false
+  TypeNameLimit: 0
