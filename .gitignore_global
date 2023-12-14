@@ -1,1 +1,4 @@
 .vscode
+compile_commands.json
+/.cache/clangd
+/.ccls-cache

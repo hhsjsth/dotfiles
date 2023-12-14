@@ -25,5 +25,8 @@ CompileFlags:
   Remove: [-march=*, -mabi=*]
 InlayHints:
   Enabled: Yes
-  #  Designators: false
   TypeNameLimit: 0
+  BlockEnd: Yes
+  Designators: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes

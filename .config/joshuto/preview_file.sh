@@ -7,6 +7,10 @@
 ## ```
 ## preview_script = "~/.config/joshuto/preview_file.sh"
 ## ```
+## Make sure the file is marked as executable:
+## ```sh
+## chmod +x ~/.config/joshuto/preview_file.sh
+## ```
 ## Joshuto will call this script for each file when first hovered by the cursor.
 ## If this script returns with an exit code 0, the stdout of this script will be
 ## the file's preview text in Joshuto's right panel.
@@ -92,11 +96,15 @@ handle_extension() {
             exit 1 ;;
 
             ## OpenDocument
-        odt|ods|odp|sxw)
+        odt|sxw)
             ## Preview as text conversion
             odt2txt "${FILE_PATH}" && exit 0
             ## Preview as markdown conversion
             pandoc -s -t markdown -- "${FILE_PATH}" && exit 0
+            exit 1 ;;
+        ods|odp)
+            ## Preview as text conversion (unsupported by pandoc for markdown)
+            odt2txt "${FILE_PATH}" && exit 0
             exit 1 ;;
 
             ## XLSX
