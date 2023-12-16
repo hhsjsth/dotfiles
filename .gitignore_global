@@ -2,3 +2,19 @@
 compile_commands.json
 /.cache/clangd
 /.ccls-cache
+
+# Linux kernel source code
+/tools/testing/selftests/*
+cpufreq-bench
+cpupower
+kselftest/
+libcpupower.so.0.0.1
+libcpupower.so.1
+po/
+tools/firewire/nosy-dump
+tools/hv/hv_fcopy_daemon
+tools/hv/hv_kvp_daemon
+tools/hv/hv_vss_daemon
+tools/spi/include/
+turbostat
+
