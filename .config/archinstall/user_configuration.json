@@ -170,7 +170,7 @@
     "profile_config": null,
     "script": "guided",
     "silent": false,
-    "swap": true,
+    // "swap": true,
     "timezone": "Asia/Shanghai",
     "version": "2.6.3"
 }
