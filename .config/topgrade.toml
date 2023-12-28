@@ -92,10 +92,10 @@
 
 
 [python]
-# enable_pip_review = true                         ###disabled by default
-# enable_pip_review_local = true                   ###disabled by default
-# enable_pipupgrade = true                         ###disabled by default
-# pipupgrade_arguments = "-y -u --pip-path pip"    ###disabled by default
+enable_pip_review = true                         ###disabled by default
+enable_pip_review_local = true                   ###disabled by default
+enable_pipupgrade = true                         ###disabled by default
+pipupgrade_arguments = "-y -u --pip-path pip"    ###disabled by default
 
 
 [composer]

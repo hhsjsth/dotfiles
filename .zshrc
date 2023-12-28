@@ -249,7 +249,7 @@ alias pacman="sudo pacman"
 alias systemctl="sudo systemctl"
 alias fdisk="sudo fdisk"
 # alias updatedb="sudo updatedb"
-alias zshhist="nvim ~/.zsh_history"
+alias zshhist="nvims ~/.zsh_history"
 alias che='chezmoi'
 # alias tree='lsd --tree'
 
@@ -424,7 +424,7 @@ appendpath () {
 }
 
 appendpath "$HOME/.cargo/bin"
-appendpath "$HOME/bin"
+# appendpath "$HOME/bin"
 appendpath "$HOME/.local/bin"
 appendpath "$HOME/go/bin"
 appendpath "/opt/alist"
@@ -441,6 +441,9 @@ prependpath () {
       ;;
     esac
 }
+
+prependpath "$HOME/venv/bin"
+prependpath "$HOME/bin"
 
 #### PATH
 ##############################
@@ -463,12 +466,12 @@ setup_samba() {
   path = /home/${USER}
   read only = no
   writeable = yes
-  browseable = yes
+  browseable = no
   create mask = 0644
-  force create mode = 0644
+  force create mask = 0644
   directory mode = 0755
-  force directory mode = 0755
-  valid users = @${USER}
+  force directory mask = 0755
+  valid users = ${USER}
 EOF
   sudo cp -f $TMP_SMB_CONF $SMB_CONF
   sudo smbpasswd -a gtr # 创建一个 smb 账户
@@ -512,10 +515,10 @@ bindkey -s ^n "nvims\n"
 
 sethostproxy
 
+[ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
+
+export SAVEHIST=1000000 # 保留 100000 条历史记录
 setopt hist_save_no_dups # 让 zsh 在保存历史记录到文件时删除所有重复的命令，只保留最新的命令。只会忽略和最后一条历史命令相同的命令，不把它们保存到历史记录中。
 setopt hist_ignore_all_dups # 让 zsh 在保存历史记录时删除所有重复的命令，只保留最新的命令。会忽略所有和之前任何一条历史命令相同的命令，不把它们保存到历史记录中。
 setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历史记录，这样可以在多个 zsh 会话中共享历史记录。
 setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
-export SAVEHIST=1000000 # 保留 100000 条历史记录
-
-[ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
