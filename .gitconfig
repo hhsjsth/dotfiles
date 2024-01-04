@@ -62,5 +62,5 @@
 
 [url "https://"]
 	insteadOf = git://
-[fetch]
-	prune = false
+# [fetch]
+# 	prune = false
