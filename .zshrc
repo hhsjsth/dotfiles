@@ -251,7 +251,7 @@ alias fdisk="sudo fdisk"
 # alias updatedb="sudo updatedb"
 alias zshhist="nvims ~/.zsh_history"
 alias che='chezmoi'
-# alias tree='lsd --tree'
+alias tree='lsd --tree'
 
 function mkcd {
   command mkdir $1 && cd $1
