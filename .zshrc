@@ -84,11 +84,12 @@ HIST_STAMPS="yyyy-mm-dd"
 # 可选的 colored-man-pages git (也就一些 git 的 alias)
 # plugins=(zsh-autosuggestions zsh-syntax-highlighting sudo vi-mode aliases command-not-found fzf-tab)
 plugins=(
-	fast-syntax-highlighting
-	sudo
-	vi-mode
-	extract
-	fzf-tab
+  fast-syntax-highlighting
+  sudo
+  vi-mode
+  extract
+  fzf-tab
+  docker
 )
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
@@ -187,7 +188,7 @@ zstyle ':fzf-tab:*' fzf-flags --height 50%
 
 # ranger with neovim
 export VISUAL=nvim
-export EDITOR=nvim
+export EDITOR=nvim-lazy
 export VI_MODE_SET_CURSOR=true
 
 # zoxide
@@ -247,6 +248,7 @@ alias neo="neofetch"
 alias neolol="ff | lolcat"
 alias pacman="sudo pacman"
 alias systemctl="sudo systemctl"
+alias docker="sudo docker"
 alias fdisk="sudo fdisk"
 # alias updatedb="sudo updatedb"
 alias zshhist="nvims ~/.zsh_history"
