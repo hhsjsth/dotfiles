@@ -6,6 +6,7 @@ use_trash = false
 watch_files = true
 xdg_open = false
 xdg_open_fork = false
+case_insensitive_ext = false
 
 custom_commands = []
 
@@ -25,7 +26,7 @@ tilde_in_titlebar = true
 # none, absolute, relative
 line_number_style = "absolute"
 
-# size, mtime, user, gourp, perm. can be combined with |. 
+# size, mtime, user, gourp, perm. can be combined with |.
 # `none` to disable, `all` to enable all
 # all and none can't be combined with other options
 linemode = "size"
