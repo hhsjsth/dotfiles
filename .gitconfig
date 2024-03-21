@@ -31,16 +31,16 @@
 	email = is.gutaorui@outlook.com
 
 [http]
-	proxy = socks5://gtr-host:7890
+	proxy = http://gtr-host:7890
 
 [https]
-	proxy = socks5://gtr-host:7890
+	proxy = http://gtr-host:7890
 
 [git]
-	proxy = socks5://gtr-host:7890
+	proxy = http://gtr-host:7890
 
 [http "https://github.com"]
-	proxy = socks5://192.168.31.250:7890
+	proxy = http://gtr-host:7890
 
 [color]
 	ui = auto
