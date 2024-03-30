@@ -303,14 +303,14 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 ######################## proxy begin ########################
 setwslgitproxy() {
   host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
-  # [ -d .git/ ] && git config http.https://github.com.proxy socks5://$host_ip:7890
-  git config --global http.https://github.com.proxy socks5://$host_ip:7890
+  # [ -d .git/ ] && git config http.https://github.com.proxy socks://$host_ip:7890
+  # git config --global http.https://github.com.proxy http://$host_ip:7890
 }
 
 unwslgitproxy() {
   host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
   [ -d .git/ ] && git config --unset http.https://github.com.proxy
-  git config --unset --global http.https://github.com.proxy
+  # git config --unset --global http.https://github.com.proxy
 }
 
 setwslproxy() {
@@ -322,10 +322,10 @@ setwslproxy() {
   export http_proxy="http://$host_ip:7890"
   export https_proxy="http://$host_ip:7890"
   # 以下是成功的
-  # git config http.proxy socks5://$host_ip:7890
+  # git config http.proxy socks://$host_ip:7890
   # 以下没有试过
-  # [ -d .git/ ] && git config http.https://github.com.proxy socks5://$host_ip:7890
-  # git config --global http.https://github.com.proxy socks5://$host_ip:7890
+  # [ -d .git/ ] && git config http.https://github.com.proxy socks://$host_ip:7890
+  git config --global http.https://github.com.proxy socks://$host_ip:7890
 }
 
 unproxy() {
@@ -333,7 +333,7 @@ unproxy() {
   unset http_proxy
   unset https_proxy
   # [ -d .git/ ] && git config --unset http.https://github.com.proxy
-  # git config --unset --global http.https://github.com.proxy
+  git config --unset --global http.https://github.com.proxy
 }
 
 setsshproxy() {
@@ -342,7 +342,7 @@ setsshproxy() {
   export all_proxy="http://$host_ip:7890"
   export http_proxy="http://$host_ip:7890"
   export https_proxy="http://$host_ip:7890"
-  git config --global http.https://github.com.proxy socks5://$host_ip:7890
+  git config --global http.https://github.com.proxy http://$host_ip:7890
 }
 
 sethostproxy() {
@@ -357,7 +357,7 @@ sethostproxy() {
   export RSYNC_PROXY=$proxy
   export ALL_PROXY=$http_proxy
   export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-  git config --global http.https://github.com.proxy socks5://gtr-host:7890
+  # git config --global http.https://github.com.proxy http://gtr-host:7890
 }
 
 ######################## proxy end ########################
@@ -516,7 +516,7 @@ bindkey -s ^n "nvims\n"
 # source
 ##############################
 
-setsshproxy
+sethostproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
