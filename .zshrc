@@ -356,9 +356,10 @@ sethostproxy() {
   export FTP_PROXY=$proxy
   export RSYNC_PROXY=$proxy
   export ALL_PROXY=$http_proxy
-  export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+  export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com,*sharepoint*"
   # git config --global http.https://github.com.proxy http://gtr-host:7890
 }
+
 
 ######################## proxy end ########################
 
@@ -516,7 +517,7 @@ bindkey -s ^n "nvims\n"
 # source
 ##############################
 
-sethostproxy
+# sethostproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
@@ -526,3 +527,4 @@ export SAVEHIST=1000000 # 保留 100000 条历史记录
 # setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历史记录，这样可以在多个 zsh 会话中共享历史记录。
 # setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
 setopt NO_HUP
+

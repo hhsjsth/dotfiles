@@ -38,10 +38,6 @@
 
 [git]
 	proxy = http://gtr-host:7890
-
-[http "https://github.com"]
-	proxy = http://gtr-host:7890
-
 [color]
 	ui = auto
 

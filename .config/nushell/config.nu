@@ -760,3 +760,5 @@ $env.config = {
         }
     ]
 }
+
+use '/home/gtr/.config/broot/launcher/nushell/br' *
