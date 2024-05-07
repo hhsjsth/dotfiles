@@ -20,7 +20,8 @@ for i in {$start..$end}; do
   for folder in $i.*; do
     if [ -d "$folder" ]; then
       echo "Compressing $folder..."
-      7z a "${folder}.7z" "$folder"
+      7z a -p$(< /home/gtr/share/Seagate/动漫/pwd) -mhe=on "${folder}.7z" "$folder"
+      7z t -p$(< /home/gtr/share/Seagate/动漫/pwd) "${folder}.7z"
     else
       echo "Folder does not exist, skipping..."
     fi
