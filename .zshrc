@@ -446,7 +446,6 @@ prependpath () {
     esac
 }
 
-prependpath "$HOME/venv/bin"
 prependpath "$HOME/bin"
 
 #### PATH
@@ -517,7 +516,7 @@ bindkey -s ^n "nvims\n"
 # source
 ##############################
 
-# sethostproxy
+sethostproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
