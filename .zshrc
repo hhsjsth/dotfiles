@@ -90,6 +90,12 @@ plugins=(
   extract
   fzf-tab
   docker
+  colored-man-pages
+  archlinux
+  command-not-found
+  colorize
+  eza
+  fd
 )
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
@@ -215,9 +221,9 @@ export LESSOPEN='|$HOME/.lessfilter %s'
 # 输入 d 回车可以查看当前会话访问过的所有目录
 
 alias update="sudo apt update -y && sudo apt upgrade -y"
-alias ls="lsd"
-alias ll="lsd -l"
-alias la="lsd -lAh"
+# alias ls="lsd"
+# alias ll="lsd -l"
+# alias la="lsd -lAh"
 alias ff="fastfetch"
 alias cf="cpufetch"
 alias jo="joshuto"
@@ -318,9 +324,10 @@ setwslproxy() {
   # export all_proxy="socks://$host_ip:10810"
   # export http_proxy="socks://$host_ip:10810"
   # export https_proxy="socks://$host_ip:10810"
-  export all_proxy="http://$host_ip:7890"
-  export http_proxy="http://$host_ip:7890"
-  export https_proxy="http://$host_ip:7890"
+  # export all_proxy="http://$host_ip:7890"
+  # export http_proxy="http://$host_ip:7890"
+  # export https_proxy="http://$host_ip:7890"
+  export ALL_PROXY="http://$host_ip:7890"
   # 以下是成功的
   # git config http.proxy socks://$host_ip:7890
   # 以下没有试过
@@ -329,34 +336,36 @@ setwslproxy() {
 }
 
 unproxy() {
-  unset all_proxy
-  unset http_proxy
-  unset https_proxy
+  # unset all_proxy
+  # unset http_proxy
+  # unset https_proxy
   # [ -d .git/ ] && git config --unset http.https://github.com.proxy
+  unset ALL_PROXY
   git config --unset --global http.https://github.com.proxy
 }
 
 setsshproxy() {
   host_ip=$(echo $SSH_CONNECTION | awk '{print $1}')
   # host_ip=$(echo $SSH_CONNECTION | choose 0)
-  export all_proxy="http://$host_ip:7890"
-  export http_proxy="http://$host_ip:7890"
-  export https_proxy="http://$host_ip:7890"
+  # export all_proxy="http://$host_ip:7890"
+  # export http_proxy="http://$host_ip:7890"
+  # export https_proxy="http://$host_ip:7890"
+  export ALL_PROXY="http://$host_ip:7890"
   git config --global http.https://github.com.proxy http://$host_ip:7890
 }
 
 sethostproxy() {
-  export http_proxy=http://gtr-host:7890
-  export https_proxy=$http_proxy
-  export ftp_proxy=$http_proxy
-  export rsync_proxy=$http_proxy
-  export all_proxy=$http_proxy
-  export HTTP_PROXY=$proxy
-  export HTTPS_PROXY=$proxy
-  export FTP_PROXY=$proxy
-  export RSYNC_PROXY=$proxy
-  export ALL_PROXY=$http_proxy
-  export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com,*sharepoint*"
+  # export http_proxy=http://gtr-host:7890
+  # export https_proxy=$http_proxy
+  # export ftp_proxy=$http_proxy
+  # export rsync_proxy=$http_proxy
+  # export all_proxy=$http_proxy
+  # export HTTP_PROXY=$proxy
+  # export HTTPS_PROXY=$proxy
+  # export FTP_PROXY=$proxy
+  # export RSYNC_PROXY=$proxy
+  export ALL_PROXY=http://gtr-host:7890
+  # export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com,*sharepoint*"
   # git config --global http.https://github.com.proxy http://gtr-host:7890
 }
 
@@ -496,7 +505,7 @@ alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 
 function nvims() {
   items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config" --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
@@ -516,7 +525,7 @@ bindkey -s ^n "nvims\n"
 # source
 ##############################
 
-sethostproxy
+# sethostproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
