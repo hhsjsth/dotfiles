@@ -84,18 +84,19 @@ HIST_STAMPS="yyyy-mm-dd"
 # 可选的 colored-man-pages git (也就一些 git 的 alias)
 # plugins=(zsh-autosuggestions zsh-syntax-highlighting sudo vi-mode aliases command-not-found fzf-tab)
 plugins=(
+  fzf-tab
+  fzf-tab-source
   fast-syntax-highlighting
   sudo
   vi-mode
   extract
-  fzf-tab
   docker
   colored-man-pages
   archlinux
   command-not-found
   colorize
   eza
-  fd
+  # fd
 )
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
@@ -117,64 +118,73 @@ eval "$(zoxide init zsh)"
 #### EVAL
 ##############################
 
-##############################
-#### fzf-tab
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-# give a preview of commandline arguments when completing `kill`
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
-  '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
-# show systemd unit status
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-# show file contents
+# ##############################
+# #### fzf-tab
+# # disable sort when completing `git checkout`
+# zstyle ':completion:*:git-checkout:*' sort false
+# # set descriptions format to enable group support
+# zstyle ':completion:*:descriptions' format '[%d]'
+# # set list-colors to enable filename colorizing
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# # preview directory's content with exa when completing cd
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# # switch group using `,` and `.`
+# zstyle ':fzf-tab:*' switch-group ',' '.'
+# # give a preview of commandline arguments when completing `kill`
+# zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+# zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+#   '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
+# zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
+# # show systemd unit status
+# zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+# # show file contents
 # zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-zstyle ':fzf-tab:complete:*:*' fzf-preview '$HOME/.lessfilter ${(Q)realpath}'
+export LESSOPEN='|$HOME/.lessfilter %s'
+# zstyle ':fzf-tab:complete:*:*' fzf-preview '$HOME/.lessfilter ${(Q)realpath}'
 # To disable or override preview for command options and subcommands, use following
 # zstyle ':fzf-tab:complete:*:options' fzf-preview
 # zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
-# environment variable
-zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
-	fzf-preview 'echo ${(P)word}'
-# git
-# it is an example. you can change it
-zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
-	'git diff $word | delta'
-zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
-	'git log --color=always $word'
-zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
-	'git help $word | bat -plman --color=always'
-zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
-	'case "$group" in
-	"commit tag") git show --color=always $word ;;
-	*) git show --color=always $word | delta ;;
-	esac'
-zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
-	'case "$group" in
-	"modified file") git diff $word | delta ;;
-	"recent commit object name") git show --color=always $word | delta ;;
-	*) git log --color=always $word ;;
-	esac'
+# 自己写出来的, 不是参考资料的, 上面是参考资料的, 不符合预期
+zstyle ':fzf-tab:complete:*:options' fzf-flags --no-preview
+zstyle ':fzf-tab:complete:*:argument-1' fzf-flags --no-preview
+# # environment variable
+# zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+# 	fzf-preview 'echo ${(P)word}'
+# # git
+# # it is an example. you can change it
+# zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+# 	'git diff $word | delta'
+# zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+# 	'git log --color=always $word'
+# zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+# 	'git help $word | bat -plman --color=always'
+# zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+# 	'case "$group" in
+# 	"commit tag") git show --color=always $word ;;
+# 	*) git show --color=always $word | delta ;;
+# 	esac'
+# zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+# 	'case "$group" in
+# 	"modified file") git diff $word | delta ;;
+# 	"recent commit object name") git show --color=always $word | delta ;;
+# 	*) git log --color=always $word ;;
+# 	esac'
 
-# Homebrew
-zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
-# tldr
-zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
-# Commands
-zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
-  '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
-zstyle ':fzf-tab:*' fzf-flags --height 50%
-#### fzf-tab
-##############################
+# # Homebrew
+# zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
+# # tldr
+# zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
+# # Commands
+# zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
+#   '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
+# zstyle ':fzf-tab:*' fzf-flags --height 50%
+
+# custom
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:toggle+down,ctrl-k:up+toggle'
+zstyle ':fzf-tab:*' fzf-min-height 100
+zstyle ':fzf-tab:*' continuous-trigger '/'
+# #### fzf-tab
+# ##############################
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -206,7 +216,7 @@ export ATUIN_NOBIND="true"
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 
-export LESSOPEN='|$HOME/.lessfilter %s'
+export RV=/opt/riscv64-gnu-toolchain-glibc-bin/bin/riscv64-unknown-linux-gnu-
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -261,6 +271,7 @@ alias fdisk="sudo fdisk"
 alias zshhist="nvims ~/.zsh_history"
 alias che='chezmoi'
 alias tree='lsd --tree'
+alias duff='duf --only local'
 
 function mkcd {
   command mkdir $1 && cd $1
@@ -375,7 +386,7 @@ sethostproxy() {
 ########
 #### fzf
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude .local/state/nvim/ -I'
-export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --inline-info -m --preview "$HOME/.lessfilter {}"'
+export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border --inline-info -m --preview "$HOME/.lessfilter {}"'
 # export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --inline-info -m'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
@@ -525,7 +536,7 @@ bindkey -s ^n "nvims\n"
 # source
 ##############################
 
-# sethostproxy
+sethostproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
@@ -535,4 +546,3 @@ export SAVEHIST=1000000 # 保留 100000 条历史记录
 # setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历史记录，这样可以在多个 zsh 会话中共享历史记录。
 # setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
 setopt NO_HUP
-
