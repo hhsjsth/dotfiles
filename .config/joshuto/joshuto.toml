@@ -40,7 +40,8 @@ reverse = false
 
 [preview]
 # max_preview_size = 2097152                           # 2MB
-max_preview_size = 2147483648                          # 2GB
+# max_preview_size = 2147483648                        # 2GB
+max_preview_size = 209715200                           # 50MB
 preview_script = "~/.config/joshuto/preview_file.sh"
 
 [search]

@@ -271,7 +271,7 @@ alias fdisk="sudo fdisk"
 alias zshhist="nvims ~/.zsh_history"
 alias che='chezmoi'
 alias tree='lsd --tree'
-alias duff='duf --only local'
+alias duff='duf --only local,fuse'
 
 function mkcd {
   command mkdir $1 && cd $1
