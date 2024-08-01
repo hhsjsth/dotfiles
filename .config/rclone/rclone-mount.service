@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount Rclone Drive
+After=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount alist-host: /home/gtr/share/gtr-host --config /home/gtr/.config/rclone/rclone.conf --allow-other --uid=1000 --gid=1000
+ExecStop=/usr/bin/fusermount -u /home/gtr/share/gtr-host
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
