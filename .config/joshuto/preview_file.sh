@@ -206,6 +206,16 @@ handle_mime() {
             mediainfo "${FILE_PATH}" && exit 0
             exiftool "${FILE_PATH}" && exit 0
             exit 1 ;;
+
+        application/x-*)
+            readelf -hSl "${FILE_PATH}" && exit 0
+            exit 1 ;;
+
+        application/octet-stream)
+            ## Preview as text conversion
+            hexyl "${FILE_PATH}" && exit 0
+            exit 1 ;;
+
     esac
 }
 

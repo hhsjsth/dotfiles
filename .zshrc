@@ -177,12 +177,12 @@ zstyle ':fzf-tab:complete:*:argument-1' fzf-flags --no-preview
 # # Commands
 # zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
 #   '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
-# zstyle ':fzf-tab:*' fzf-flags --height 50%
 
 # custom
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:toggle+down,ctrl-k:up+toggle'
-zstyle ':fzf-tab:*' fzf-min-height 100
+zstyle ':fzf-tab:*' fzf-min-height 200
 zstyle ':fzf-tab:*' continuous-trigger '/'
+zstyle ':fzf-tab:complete:pmap:*' fzf-flags --no-preview
 # #### fzf-tab
 # ##############################
 
@@ -500,6 +500,8 @@ EOF
   sudo smbpasswd -a gtr # 创建一个 smb 账户
   sudo systemctl enable --now smb.service
 }
+
+# alias cmap='function _cmap() { cat /proc/$1/maps; }; _cmap'
 
 # function
 ##############################
