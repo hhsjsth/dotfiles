@@ -543,8 +543,8 @@ sethostproxy
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
 export SAVEHIST=1000000 # 保留 100000 条历史记录
-# setopt hist_save_no_dups # 让 zsh 在保存历史记录到文件时删除所有重复的命令，只保留最新的命令。只会忽略和最后一条历史命令相同的命令，不把它们保存到历史记录中。
-# setopt hist_ignore_all_dups # 让 zsh 在保存历史记录时删除所有重复的命令，只保留最新的命令。会忽略所有和之前任何一条历史命令相同的命令，不把它们保存到历史记录中。
-# setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历史记录，这样可以在多个 zsh 会话中共享历史记录。
-# setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
+setopt hist_save_no_dups # 让 zsh 在保存历史记录到文件时删除所有重复的命令，只保留最新的命令。只会忽略和最后一条历史命令相同的命令，不把它们保存到历史记录中。
+setopt hist_ignore_all_dups # 让 zsh 在保存历史记录时删除所有重复的命令，只保留最新的命令。会忽略所有和之前任何一条历史命令相同的命令，不把它们保存到历史记录中。
+setopt share_history # 让 zsh 在每次执行命令后自动保存和读取历史记录，这样可以在多个 zsh 会话中共享历史记录。
+setopt hist_expire_dups_first # 让 zsh 在达到历史记录的最大数量时，优先删除重复的命令，保留不重复的命令。
 setopt NO_HUP
