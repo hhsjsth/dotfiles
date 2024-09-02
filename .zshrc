@@ -352,7 +352,7 @@ unproxy() {
   # unset https_proxy
   # [ -d .git/ ] && git config --unset http.https://github.com.proxy
   unset ALL_PROXY
-  git config --unset --global http.https://github.com.proxy
+  # git config --unset --global http.https://github.com.proxy
 }
 
 setsshproxy() {
@@ -362,7 +362,10 @@ setsshproxy() {
   # export http_proxy="http://$host_ip:7890"
   # export https_proxy="http://$host_ip:7890"
   export ALL_PROXY="http://$host_ip:7890"
-  git config --global http.https://github.com.proxy http://$host_ip:7890
+  # git config --global http.https://github.com.proxy http://$host_ip:7890
+  git config --global http.proxy http://$host_ip:7890
+  git config --global https.proxy http://$host_ip:7890
+  git config --global git.proxy http://$host_ip:7890
 }
 
 sethostproxy() {
@@ -378,6 +381,9 @@ sethostproxy() {
   export ALL_PROXY=http://gtr-host:7890
   # export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com,*sharepoint*"
   # git config --global http.https://github.com.proxy http://gtr-host:7890
+  git config --global http.proxy http://gtr-host:7890
+  git config --global https.proxy http://gtr-host:7890
+  git config --global git.proxy http://gtr-host:7890
 }
 
 

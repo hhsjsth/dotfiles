@@ -32,15 +32,15 @@
 
 [http]
 	proxy = http://gtr-host:7890
-	noproxy = gcc.gnu.org,*.gnu.org,gitee.com
+	noproxy = *.gnu.org,gitee.com
 
 [https]
 	proxy = http://gtr-host:7890
-	noproxy = gcc.gnu.org,*.gnu.org,gitee.com
+	noproxy = *.gnu.org,gitee.com
 
 [git]
 	proxy = http://gtr-host:7890
-	noproxy = gcc.gnu.org,*.gnu.org,gitee.com
+	noproxy = *.gnu.org,gitee.com
 [color]
 	ui = auto
 
