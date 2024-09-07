@@ -1,0 +1,29 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sda2
+UUID=69665602-cf85-4c57-afee-8ef674ff6e6a	/         	btrfs     	rw,relatime,ssd,space_cache=v2,subvol=/@	0 0
+
+# /dev/sda1
+UUID=C69B-BD49      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/sda2
+UUID=69665602-cf85-4c57-afee-8ef674ff6e6a	/.snapshots	btrfs     	rw,relatime,ssd,space_cache=v2,subvolid=260,subvol=/@.snapshots	0 0
+
+# /dev/sda2
+UUID=69665602-cf85-4c57-afee-8ef674ff6e6a	/home     	btrfs     	rw,relatime,ssd,space_cache=v2,subvol=/@home	0 0
+
+# /dev/sda2
+UUID=69665602-cf85-4c57-afee-8ef674ff6e6a	/var/cache/pacman/pkg	btrfs     	rw,relatime,ssd,space_cache=v2,subvolid=259,subvol=/@pkg	0 0
+
+# /dev/sda2
+UUID=69665602-cf85-4c57-afee-8ef674ff6e6a	/var/log  	btrfs     	rw,relatime,ssd,space_cache=v2,subvolid=258,subvol=/@log	0 0
+
+# /dev/sda2
+UUID=69665602-cf85-4c57-afee-8ef674ff6e6a	/swap		btrfs     	rw,relatime,ssd,space_cache=v2,subvolid=274,subvol=/@swap	0 0
+
+/swap/swapfile none swap defaults 0 0
+
+UUID=4E21-0000 /home/gtr/share/WD_Elements_2621 exfat defaults,uid=1000,gid=1000 0 0
+UUID=EFFB-D765 /home/gtr/share/Seagate exfat defaults,uid=1000,gid=1000 0 0
