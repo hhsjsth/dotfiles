@@ -218,6 +218,12 @@ export GOPROXY=https://goproxy.cn
 
 export RV=/opt/riscv64-gnu-toolchain-glibc-bin/bin/riscv64-unknown-linux-gnu-
 
+# Ktoolbox
+export KTOOLBOX_JOB__POST_STRUCTURE__ATTACHMENTS=./
+export KTOOLBOX_JOB__SEQUENTIAL_FILENAME=True
+export KTOOLBOX_JOB__POST_DIRNAME_FORMAT=[{published}]_{id}_{title}
+# export KTOOLBOX_JOB__MIX_POSTS=true
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -544,8 +550,8 @@ bindkey -s ^n "nvims\n"
 # source
 ##############################
 
-sethostproxy
-# setsshproxy
+# sethostproxy
+setsshproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
