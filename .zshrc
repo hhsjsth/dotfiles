@@ -220,8 +220,11 @@ export RV=/opt/riscv64-gnu-toolchain-glibc-bin/bin/riscv64-unknown-linux-gnu-
 
 # Ktoolbox
 export KTOOLBOX_JOB__POST_STRUCTURE__ATTACHMENTS=./
+export KTOOLBOX_JOB__COUNT=1
 export KTOOLBOX_JOB__SEQUENTIAL_FILENAME=True
 export KTOOLBOX_JOB__POST_DIRNAME_FORMAT=[{published}]_{id}_{title}
+# 文件名没必要用 title, 因为直接就和前面的路径重复了
+# export KTOOLBOX_JOB__FILENAME_FORMAT=[{title}]_{}
 # export KTOOLBOX_JOB__MIX_POSTS=true
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -551,7 +554,7 @@ bindkey -s ^n "nvims\n"
 ##############################
 
 # sethostproxy
-setsshproxy
+# setsshproxy
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
 
