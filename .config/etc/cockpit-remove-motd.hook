@@ -1,0 +1,13 @@
+# /etc/pacman.d/hooks/cockpit-remove-motd.hook
+
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = cockpit
+
+[Action]
+Description = Neutralize cockpit motd and issue files
+When = PostTransaction
+Exec = /bin/sh -c 'rm -f /etc/motd.d/cockpit /etc/issue.d/cockpit.issue 2>/dev/null || true; ln -sfn /dev/null /etc/motd.d/cockpit 2>/dev/null || true; ln -sfn /dev/null /etc/issue.d/cockpit.issue 2>/dev/null || true'
+

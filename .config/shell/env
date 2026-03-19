@@ -1,0 +1,10 @@
+export EDITOR=helix
+export VISUAL=helix
+export PATH="$HOME/bin:$PATH"
+export GOPROXY=https://goproxy.cn
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+export HTTP_PROXY="socks5://gtr-proxy-server:7890"
+export HTTPS_PROXY="socks5://gtr-proxy-server:7890"
+export ALL_PROXY="socks5://gtr-proxy-server:7890"
+export GPG_TTY=$(tty)

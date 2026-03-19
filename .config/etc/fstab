@@ -1,0 +1,25 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p2
+UUID=f32ff620-d0c6-4548-a9e5-a537f0b343f6	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1
+UUID=EA84-8BA2      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/sda1
+UUID=b5889c65-7b1d-4f33-8544-c56f63cc8f86  /data  ext4        rw,relatime 0 2
+
+# Seagate /dev/sdb1
+# UUID=454ef407-a24d-4900-95f7-2791a5afa228  /data/backup/Seagate  ext4    rw,noatime,nofail,noauto 0 2
+
+# Elements /dev/sdc1
+# UUID=dee9b0e2-3007-48d0-a5ef-6ec99e3dbf69  /data/backup/Elements  ext4   rw,noatime,nofail 0 2
+
+# 尝试之后还是发现老旧机械硬盘得用 exfat 比较好, 负担比较小, 稳定性也不差
+LABEL=Elements /data/backup/Elements exfat defaults,nofail,noauto,uid=1000,gid=1000 0 2
+LABEL=Seagate /data/backup/Seagate exfat defaults,nofail,noauto,uid=1000,gid=1000 0 2
+
+# tmpfs 但是实测在 rclone 备份过程中就算限制了 rclone 的 --vfs-cache-max-size 还是会出现空间不足的情况
+# tmpfs   /mnt/ramcache   tmpfs   rw,size=8G   0 0

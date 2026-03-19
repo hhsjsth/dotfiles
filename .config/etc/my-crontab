@@ -1,0 +1,6 @@
+# Chronological table of program loadings                                       
+# Edit with "crontab" for proper functionality, "man 5 crontab" for formatting
+# User: johndoe
+
+# mm  hh  DD  MM  W /path/progam [--option]...  ( W = weekday: 0-6 [Sun=0] )
+  30  19  *   *   * rsync -avz --progress --delete /home/gtr/share/gtr-host/PC/E/数据 /home/gtr/share/Seagate/E盘备份 >> /home/gtr/rsync_数据.log 2>&1

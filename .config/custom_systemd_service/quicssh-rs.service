@@ -1,0 +1,14 @@
+[Unit]
+Description=SSH over QUIC Server (quicssh-rs)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/quicssh-rs server --proxy-to 127.0.0.1:51376
+Restart=always
+RestartSec=5
+# 限制权限，增强安全性
+User=nobody
+
+[Install]
+WantedBy=multi-user.target

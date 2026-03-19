@@ -1,0 +1,6 @@
+127.0.0.1		localhost
+::1			localhost
+192.168.31.11		gtr-arch.com	gtr-arch
+192.168.31.222           gtr-host.com            gtr-host
+192.168.31.10           gtr-wrt.com            gtr-wrt
+192.168.31.11           gtr-proxy-server.com gtr-proxy-server

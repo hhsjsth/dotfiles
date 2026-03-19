@@ -1,0 +1,6 @@
+.ssh/authorized_keys
+.ssh/id_ed25519
+.ssh/id_ed25519.pub
+.config/tigervnc/passwd
+.config/pwd
+.config/shell/github_token.env

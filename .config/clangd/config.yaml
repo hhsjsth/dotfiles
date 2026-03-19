@@ -1,0 +1,32 @@
+# 因为clangd在新版本移除了--clang-tidy的支持, 所以我们需要自己在clangd的配置路径下创建config.yaml进行开启代码静态检查
+Diagnostics:
+  # ClangTidy:
+  #   Add:
+  #     [
+  #       performance-*,
+  #       bugprone-*,
+  #       portability-*,
+  #       modernize-*,
+  #       readability-*,
+  #       cppcoreguidelines*,
+  #       portabilit*,
+  #       google*
+  #     ]
+  #   Remove:
+  #     [
+  #       modernize-use-trailing-return-type,
+  #       bugprone-sizeof-expression,
+  #     ]
+#     CheckOptions:
+#       WarnOnFloatingPointNarrowingConversion: false
+#   Index:
+#     Background: Build
+CompileFlags:
+  Remove: [-march=*, -mabi=*]
+# InlayHints:
+#   Enabled: Yes
+#   TypeNameLimit: 0
+#   BlockEnd: Yes
+#   Designators: Yes
+#   ParameterNames: Yes
+#   DeducedTypes: Yes

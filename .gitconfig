@@ -1,0 +1,106 @@
+[core]
+	pager = delta
+	fsmonitor = true
+	# set VSCode as default Git editor
+	# editor = code --wait
+# [sequence]
+	# or, to only affect rebase, set VS Code as your Git rebase editor
+  # editor = code --wait
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true
+	line-numbers = true
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+	guitool = vscode
+
+[diff "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+[user]
+	name = hhsjsth
+	email = is.gutaorui@outlook.com
+
+[http]
+	proxy = socks5://gtr-proxy-server:7890
+	noproxy = *.gnu.org,gitee.com
+
+[https]
+	proxy = socks5://gtr-proxy-server:7890
+	noproxy = *.gnu.org,gitee.com
+
+[git]
+	proxy = socks5://gtr-proxy-server:7890
+	noproxy = *.gnu.org,gitee.com
+[color]
+	ui = auto
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[alias]
+	lg = log --oneline --decorate --graph --all
+
+[gc]
+	auto = 0
+
+[add.interactive]
+	useBuiltin = false # required for git 2.37.0
+
+[url "https://"]
+	insteadOf = git://
+# [fetch]
+# 	prune = false
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+# 以下配置见 [How Core Git Developers Configure Git](https://blog.gitbutler.com/how-git-core-devs-configure-git/)
+[column]
+        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[init]
+        defaultBranch = main
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+# why the hell not?
+
+# [rerere]
+#         enabled = true
+#         autoupdate = true
+
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+
