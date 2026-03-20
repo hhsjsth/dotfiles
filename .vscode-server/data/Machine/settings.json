@@ -1,0 +1,20 @@
+{
+    "python.defaultInterpreterPath": "~/uv/.venv/bin/python3",
+    "leetcode.endpoint": "leetcode-cn",
+    "leetcode.defaultLanguage": "cpp",
+    "leetcode.workspaceFolder": "/home/gtr/learn/leetcode_cpp",
+    "jupyter.kernels.excludePythonEnvironments": [
+        "/usr/bin/python3",
+        "/bin/python",
+        "/usr/bin/python",
+        "~/.local/bin/python3.13",
+        "/usr/sbin/python",
+        "/sbin/python",
+        "/usr/sbin/python3",
+        "/sbin/python3",
+        "/usr/sbin/python3.13",
+        "/sbin/python3.13"
+    ],
+    // 不使用代理的话插件安装会永远处于 installing
+    "http.proxy": "http://gtr-proxy-server:7890"
+}
