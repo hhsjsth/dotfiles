@@ -1,5 +1,5 @@
 {
-    "python.defaultInterpreterPath": "~/uv/.venv/bin/python3",
+    "python.defaultInterpreterPath": "/home/gtr/uv/.venv/bin/python3",
     "leetcode.endpoint": "leetcode-cn",
     "leetcode.defaultLanguage": "cpp",
     "leetcode.workspaceFolder": "/home/gtr/learn/leetcode_cpp",

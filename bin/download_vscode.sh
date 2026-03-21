@@ -10,7 +10,7 @@ TARGET_FILE="code-stable-x64.tar.gz"
 
 # 使用 wget 下载文件，如果文件已存在则覆盖
 echo "正在下载 $TARGET_FILE..."
-wget -O "$TARGET_FILE" "$DOWNLOAD_URL" --no-check-certificate
+curl -L "$DOWNLOAD_URL" -o"$TARGET_FILE"
 
 # 检查下载是否成功
 if [ $? -eq 0 ]; then
@@ -33,8 +33,8 @@ else
 fi
 
 # 清理：删除下载的 .tar.gz 文件（可选）
-rm -f "$TARGET_FILE"
-echo "临时文件已清理。"
+# rm -f "$TARGET_FILE"
+# echo "临时文件已清理。"
 
 echo "所有操作已完成。"
 
